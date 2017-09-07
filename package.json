@@ -1,0 +1,24 @@
+{
+  "name": "embeddable",
+  "version": "0.0.1-alpha.1",
+  "description": "Make a javascript app embeddable on a web page via a single script tag",
+  "main": "index.js",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "electron": "^1.7.5"
+  },
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Amit Schechter",
+    "url": "http://two-n.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/two-n/embeddable.git"
+  },
+  "homepage": "https://github.com/two-n/embeddable",
+  "bugs": "https://github.com/two-n/embeddable/issues",
+  "scripts": {
+    "test": "test/test.sh"
+  }
+}
