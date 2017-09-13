@@ -51,14 +51,22 @@ function loadStylesheet(url, callback) {
 
 function findOwnScriptTag() {
   var scriptTags = document.getElementsByTagName('script');
-  for(var scriptTag, i = 0; i < scriptTags.length; i++) {
-    scriptTag = scriptTags[i];
-    if (isOwnScriptTag(scriptTag)) { return scriptTag; }
+  for(var i = 0; i < scriptTags.length; i++) {
+    if (isOwnScriptTag(scriptTags[i])) { return scriptTags[i]; }
   }
   throw new Error('Could not find own script tag')
 }
 
 function isOwnScriptTag(scriptTag) {
+  if (!document.currentScript) {
+    // IE11 and older do not support document.currentScript :(
+    // Instead, we check if this is the "bottom-most" script tag on the page
+    // in order to determine whether it's the currently running tag.
+    // One KNOWN ISSUE with this approach is that it doesn't work with async scripts.
+    // For more, see https://stackoverflow.com/questions/403967
+    var scriptTags = document.getElementsByTagName('script');
+    return scriptTag === scriptTags[scriptTags.length - 1]
+  }
   return scriptTag === document.currentScript;
 }
 
