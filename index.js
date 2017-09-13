@@ -41,7 +41,7 @@ function createEmbed (opts, callback) {
 }
 
 function loadStylesheet(url, callback) {
-  const l = document.createElement('link');
+  var l = document.createElement('link');
   l.rel = 'stylesheet';
   l.type = 'text/css';
   l.href = url
